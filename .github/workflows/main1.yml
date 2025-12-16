@@ -1,0 +1,30 @@
+name: Run Java HelloWorld
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Java (choose version as needed)
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      # Compile HelloWorld.java
+      - name: Compile Java program
+        run: javac HelloWorld.java
+
+      # Run HelloWorld
+      - name: Run Java program
+        run: java HelloWorld
